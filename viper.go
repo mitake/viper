@@ -32,7 +32,7 @@ import (
 	"time"
 
 	"github.com/mitchellh/mapstructure"
-	"github.com/spf13/cast"
+	"github.com/mitake/cast"
 	"github.com/spf13/pflag"
 	"gopkg.in/fsnotify.v1"
 )
