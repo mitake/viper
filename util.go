@@ -25,7 +25,6 @@ import (
 	"github.com/hashicorp/hcl"
 	"github.com/magiconair/properties"
 	"github.com/spf13/cast"
-	jww "github.com/spf13/jwalterweatherman"
 	"gopkg.in/yaml.v2"
 )
 
@@ -50,8 +49,6 @@ func insensitiviseMap(m map[string]interface{}) {
 }
 
 func absPathify(inPath string) string {
-	jww.INFO.Println("Trying to resolve absolute path to", inPath)
-
 	if strings.HasPrefix(inPath, "$HOME") {
 		inPath = userHomeDir() + inPath[5:]
 	}
@@ -68,10 +65,8 @@ func absPathify(inPath string) string {
 	p, err := filepath.Abs(inPath)
 	if err == nil {
 		return filepath.Clean(p)
-	} else {
-		jww.ERROR.Println("Couldn't discover absolute path")
-		jww.ERROR.Println(err)
 	}
+
 	return ""
 }
 
